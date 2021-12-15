@@ -19,7 +19,7 @@ export default function Results({ route }) {
       : 0;
   });
 
-  const points = results.reduce((a, b) => a + b)
+  const points = results.reduce((a, b) => a + b);
 
   console.log("Results", results);
 
@@ -32,11 +32,35 @@ export default function Results({ route }) {
       {(() => {
         switch (true) {
           case points < questions.questions.length / 3:
-            return <Image style={styles.image} source={require("../assets/sad.png")} />;
+            return (
+              <>
+                <Text>Spróbuj jeszcze raz</Text>
+                <Image
+                  style={styles.image}
+                  source={require("../assets/sad.png")}
+                />
+              </>
+            );
           case points < (questions.questions.length / 3) * 2:
-            return <Image style={styles.image} source={require("../assets/stable.jpeg")} />;
+            return (
+              <>
+                <Text>Może być</Text>
+                <Image
+                  style={styles.image}
+                  source={require("../assets/stable.jpeg")}
+                />
+              </>
+            );
           case points <= questions.questions.length:
-            return <Image style={styles.image} source={require("../assets/happy.jpg")} />;
+            return (
+              <>
+                <Text>Świetny wynik</Text>
+                <Image
+                  style={styles.image}
+                  source={require("../assets/happy.jpg")}
+                />
+              </>
+            );
         }
       })()}
     </View>
@@ -52,7 +76,7 @@ const styles = StyleSheet.create({
   image: {
     width: 200,
     height: 200,
-    objectFit: 'cover'
+    objectFit: "cover",
   },
   title: {
     fontSize: 20,
